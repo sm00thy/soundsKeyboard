@@ -4,10 +4,13 @@
     width: 100px;
     height: 100px;
     background-color: beige;
-    margin: 20 auto auto auto;
+    margin-left: 10px;
+
 }
 
 body {
-    flex-flow: row;
+    display: flex;
+    flex-direction: row;
+
     width: 100%;
 }

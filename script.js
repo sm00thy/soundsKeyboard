@@ -11,19 +11,19 @@ document.body.addEventListener('keypress',  (e) => {
         boom.currentTime = 0
         boom.play()
             break;
-        case 'e':
+        case 'w':
         clap.currentTime = 0    
         clap.play()
             break;
-        case 'r':
+        case 'e':
         tink.currentTime = 0  
         tink.play();    
             break;
-        case 't':
+        case 'r':
         kick.currentTime = 0  
         kick.play();    
             break;
-        case 'u':
+        case 't':
         hihat.currentTime = 0  
         hihat.play();    
             break;
