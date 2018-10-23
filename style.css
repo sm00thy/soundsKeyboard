@@ -1,0 +1,13 @@
+.click {
+    display: flex;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: beige;
+    margin: 20 auto auto auto;
+}
+
+body {
+    flex-flow: row;
+    width: 100%;
+}
