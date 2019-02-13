@@ -15,8 +15,7 @@ let playSounds,
     clearButton2 = document.querySelector('#clear2'),
     clearButton3 = document.querySelector('#clear3'),
     playAll = document.querySelector('#playall'),
-    clearAll = document.querySelector('#clearall'),
-    isRecording = true;
+    clearAll = document.querySelector('#clearall');
     
 document.body.addEventListener('keypress',(e) => {
     let boom = document.querySelector('#boom'),
@@ -54,7 +53,9 @@ document.body.addEventListener('keypress',(e) => {
     }
 });
 
+let isRecording = false;
 function startRecording(track, trackTime) {
+    isRecording = true;
     console.log("recording")
     console.log(track.length)
     if (isRecording) {
@@ -123,9 +124,9 @@ clearAll.addEventListener('click', function(e) {
 });
 
 playButton.addEventListener('click', playTrack.bind(null, audio, fullTime));
-playButton.addEventListener('click', playTrack.bind(null, audio1, fullTime1));
-playButton.addEventListener('click', playTrack.bind(null, audio2, fullTime2));
-playButton.addEventListener('click', playTrack.bind(null, audio3, fullTime3));
+playButton1.addEventListener('click', playTrack.bind(null, audio1, fullTime1));
+playButton2.addEventListener('click', playTrack.bind(null, audio2, fullTime2));
+playButton3.addEventListener('click', playTrack.bind(null, audio3, fullTime3));
 
 recordButton.addEventListener('click', startRecording.bind(null,audio, fullTime), false);
 recordButton1.addEventListener('click', startRecording.bind(null,audio1, fullTime1))
@@ -138,5 +139,5 @@ clearButton2.addEventListener('click', clearTrack.bind(null, audio2))
 clearButton3.addEventListener('click', clearTrack.bind(null, audio3))
 
 
-let stopRecord = document.querySelector('#stop');
+let stopRecord = document.querySelector('.stop');
 stopRecord.addEventListener('click', stopRecording);
