@@ -2,15 +2,33 @@
     display: flex;
     position: relative;
     width: 100px;
-    height: 100px;
     background-color: beige;
     margin-left: 10px;
+}
 
+.click p {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
+    text-align: center;
+}
 
+.buttons {
+    display: flex;
+    margin: 50px auto 30px auto;
+}
+
+.tracks {
     width: 100%;
+    margin-top: 20px;
+}
+
+.menu {
+    background: gainsboro;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
