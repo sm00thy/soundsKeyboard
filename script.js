@@ -30,74 +30,63 @@ document.body.addEventListener('keypress',(e) => {
         case 'q':
         boom.currentTime = 0
         boom.play()
-        record.bind(null, audio, boom);
             break;
         case 'w':
         clap.currentTime = 0
         clap.play()
-        record.bind(null, audio, clap);
             break;
         case 'e':
         tink.currentTime = 0
         tink.play();    
-        record.bind(null, audio, tink);
             break;
         case 'r':
         kick.currentTime = 0
         kick.play();    
-        record.bind(null, audio, kick);
             break;
         case 't':
         hihat.currentTime = 0  
         hihat.play(); 
-        record.bind(null, audio, hihat);
             break;
         case 'y':    
         ride.currentTime = 0
         ride.play();   
-        record.bind(null, audio, ride); 
             break;
     }
 });
 
-function startRecording(track) {
+function startRecording(track, trackTime) {
     console.log("recording")
     console.log(track.length)
     if (isRecording) {
-        
         startTime = Date.now();
         document.body.addEventListener('keypress',(e) => {    
             switch (e.key) {
                 case 'q':
                 track.push(boom);
-                fullTime = Date.now() - startTime;
+                trackTime = Date.now() - startTime;
                 break;
                 case 'w':
                 track.push(clap);
-                fullTime = Date.now() - startTime;
-                console.log("mess")
+                trackTime = Date.now() - startTime;
                 break;
                 case 'e':
                 track.push(tink);
-                fullTime = Date.now() - startTime;
+                trackTime = Date.now() - startTime;
                 break;
                 case 'r':
                 track.push(kick);
-                fullTime = Date.now() - startTime;
+                trackTime = Date.now() - startTime;
                 break;
                 case 't':
                 track.push(hihat);
-                fullTime = Date.now() - startTime;
+                trackTime = Date.now() - startTime;
                 break;
                 case 'y':
                 track.push(ride);
-                fullTime = Date.now() - startTime;
+                trackTime = Date.now() - startTime;
                 break;
             }
         });
-        if(isRecording){
-            console.log(track.length)
-        }
     }
 };
 
@@ -106,14 +95,19 @@ function stopRecording() {
     console.log("stop recording")
 };
 
-function playTrack(track /*,time*/) {
-    console.log("play track" + track)
+function playTrack(track, time) {
+    console.log("playing track")
     for (let i = 0; i < track.length; i++) {
         track[i].play();
         setTimeout(() => {
             track[i].play()
-        }, 1000);
+        }, time);
     }
+}
+
+function clearTrack (track) {
+    track.length = 0;
+    console.log(track.length)
 }
 
 playAll.addEventListener('click', function(e) {
@@ -128,11 +122,21 @@ clearAll.addEventListener('click', function(e) {
     console.log(audio.length)
 });
 
-recordButton.addEventListener('click', startRecording.bind(null,audio), false);
-recordButton1.addEventListener('click', startRecording.bind(null,audio1))
-recordButton2.addEventListener('click', startRecording.bind(null,audio2))
-recordButton3.addEventListener('click', startRecording.bind(null,audio3))
+playButton.addEventListener('click', playTrack.bind(null, audio, fullTime));
+playButton.addEventListener('click', playTrack.bind(null, audio1, fullTime1));
+playButton.addEventListener('click', playTrack.bind(null, audio2, fullTime2));
+playButton.addEventListener('click', playTrack.bind(null, audio3, fullTime3));
+
+recordButton.addEventListener('click', startRecording.bind(null,audio, fullTime), false);
+recordButton1.addEventListener('click', startRecording.bind(null,audio1, fullTime1))
+recordButton2.addEventListener('click', startRecording.bind(null,audio2, fullTime2))
+recordButton3.addEventListener('click', startRecording.bind(null,audio3, fullTime3))
+
+clearButton.addEventListener('click', clearTrack.bind(null, audio))
+clearButton1.addEventListener('click', clearTrack.bind(null, audio1))
+clearButton2.addEventListener('click', clearTrack.bind(null, audio2))
+clearButton3.addEventListener('click', clearTrack.bind(null, audio3))
+
 
 let stopRecord = document.querySelector('#stop');
 stopRecord.addEventListener('click', stopRecording);
-playButton.addEventListener('click', playTrack.bind(null, audio));
